@@ -142,5 +142,4 @@ jobs:
         with:
           app_name: petclinic
           image: jag-role-registry
-          namespace: github-actions-bot-dev
-          port: 3000       
+          namespace: github-actions-bot-dev    
