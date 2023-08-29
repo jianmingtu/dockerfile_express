@@ -123,13 +123,14 @@ jobs:
           docker build \
             --tag ${IMAGE} \
             ${CONTEXT}    
-          
-      #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Kamloops (OC PROD)
-      - name: Authenticate OC Env Specific SA - Kamloops (OC PROD)
-        uses: redhat-actions/oc-login@v1
-        env:
-          OPENSHIFT_NAMESPACE: tujianming-dev
+
+      # This step should create a deployment, service, and route to run your app and expose it to the internet.
+      # https://github.com/redhat-actions/oc-new-app#readme
+      - name: Create and expose app
+        id: deploy-and-expose
+        uses: redhat-actions/oc-new-app@v1
         with:
-          openshift_server_url: https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
-          openshift_token: sha256~z9cyw1QJ4XiFeppOmS4HBKxwcjTj1DR0TQ5UyLvaGOU
-          namespace: ${OPENSHIFT_NAMESPACE}
+          app_name: jag-role-registry
+          image: jag-role-registry
+          namespace: tujianming-dev
+          port: 3000       
