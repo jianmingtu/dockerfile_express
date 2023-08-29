@@ -57,10 +57,13 @@ env:
   TAG: ""
 
 on:
-  # https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows
   push:
-    # Edit to the branch(es) you want to build and deploy on each push.
-    branches: [ $default-branch ]
+    branches: [ main, release/*]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main, release/*]
+  workflow_dispatch:
+    branches: [ main, release/*, feature/*]
 
 jobs:
   openshift-ci-cd:
