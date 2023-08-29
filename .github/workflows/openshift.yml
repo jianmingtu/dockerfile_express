@@ -118,7 +118,7 @@ jobs:
           COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BUILDKIT: 1
           CONTEXT: .
-          IMAGE: https://jag-abc-52e74e-dev.apps.silver.devops.gov.bc.ca/jag-role-registry:dev
+          IMAGE: https://jag-abc-52e74e-dev.apps.silver.devops.gov.bc.ca/52e74e-tools/jag-role-registry:dev
         run: |
           docker build \
             --tag ${IMAGE} \
