@@ -142,4 +142,5 @@ jobs:
         with:
           app_name: petclinic
           image: jag-role-registry
-          namespace: github-actions-bot-dev    
+          namespace: tujianming-dev
+          port: 3000       
