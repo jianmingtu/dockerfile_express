@@ -131,6 +131,6 @@ jobs:
         uses: redhat-actions/oc-new-app@v1
         with:
           app_name: jag-role-registry
-          image: jag-role-registry
+          image: quay.io/redhat-github-actions/petclinic:v1
           namespace: tujianming-dev
           port: 3000       
