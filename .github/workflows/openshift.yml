@@ -111,6 +111,7 @@ jobs:
       #     registry: ${{ env.REGISTRY }}
       #     username: ${{ env.REGISTRY_USER }}
       #     password: ${{ env.REGISTRY_PASSWORD }}
+   
 
       #Build and push image to OpenShift Image stream - Kamloops (OC PROD)
       - name: Build & Push Image to Openshift Image Stream - Kamloops (OC PROD)
@@ -123,6 +124,16 @@ jobs:
           docker build \
             --tag ${IMAGE} \
             ${CONTEXT}    
+
+      #Login to Openshift using OC SA and Token of respective env. for Pod labelling - Kamloops (OC PROD)
+      - name: Authenticate OC Env Specific SA - Kamloops (OC PROD)
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_NAMESPACE: tujianming-dev
+        with:
+          openshift_server_url: https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
+          openshift_token: sha256~wgPZVq3KueGyV9OUH4M0zPYClKOOwdXlofmPtQzaK1w
+          namespace: ${OPENSHIFT_NAMESPACE}            
 
       # This step should create a deployment, service, and route to run your app and expose it to the internet.
       # https://github.com/redhat-actions/oc-new-app#readme
