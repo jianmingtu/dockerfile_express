@@ -141,6 +141,6 @@ jobs:
         uses: redhat-actions/oc-new-app@v1
         with:
           app_name: petclinic
-          image: quay.io/redhat-github-actions/petclinic:v1
+          image: jag-role-registry
           namespace: github-actions-bot-dev
           port: 3000       
